@@ -1,3 +1,5 @@
-<app-navbar></app-navbar>
+<app-navbar [isLogged]="authService.isLoggedIn()"></app-navbar>
+<div style="height: 100%;">
 <router-outlet></router-outlet>
-<app-footer ></app-footer>
+</div>
+<app-footer [isLogged]="authService.isLoggedIn()"></app-footer>

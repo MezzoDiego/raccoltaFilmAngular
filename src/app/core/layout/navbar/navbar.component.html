@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarsExample07">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="">Home</a>
+                    <a class="nav-link active" aria-current="page" routerLink="/welcome">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" routerLink="welcome">Link</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -20,22 +20,22 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown"
                         aria-expanded="false">Dropdown</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown07">
-                        <li><a class="dropdown-item" href="">Home</a></li>
-                        <li><a class="dropdown-item" href="">Ricerca
+                        <li><a class="dropdown-item" routerLink="/welcome">Home</a></li>
+                        <li><a class="dropdown-item" routerLink="welcome">Ricerca
                                 Registi</a></li>
-                        <li><a class="dropdown-item" href="">Inserisci
+                        <li *ngIf="authService.isLoggedIn()"><a class="dropdown-item"  *ifRole='["ROLE_ADMIN"]' routerLink="/regista/create">Inserisci
                                 Regista</a></li>
-                        <li><a class="dropdown-item" href="">Ricerca
+                        <li><a class="dropdown-item" routerLink="welcome">Ricerca
                                 Film</a></li>
-                        <li><a class="dropdown-item" href="">Inserisci
+                        <li *ngIf="authService.isLoggedIn()"><a class="dropdown-item" *ifRole='["ROLE_ADMIN"]' routerLink="film/create">Inserisci
                                 Film</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
         <div class="col-md-3 text-end">
-            <p class="navbar-text">Utente: Pippo
-                <a href="">Logout</a>
+            <p class="navbar-text">Utente: {{(authService.getUserLogged() | async )?.username}}
+                <a href="" (click)="logout()">Logout</a>
             </p>
         </div>
     </div>

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
-import { Film } from '../model/film';
+import { Film } from 'src/app/model/film';
 
 @Injectable({
   providedIn: 'root'
